@@ -51,7 +51,31 @@
             document.getElementById("div_chat").style.display = "block";
         }
         function registrovat() {
+            let pw1 = document.getElementById("reg-password").value;
+            let pw2 = document.getElementById("reg-password2").value;
+            if (pw1.length < 6){
+                alert("Heslo je kratke! (alespon 6 znaku)");
+                return;
+            }
 
+            if (pw1 != pw2){
+                alert("Hesla nejsou stejna!");
+                return;
+            }
+
+            let login = document.getElementById("reg-login").value;
+
+            let url = `${HOST}/users/reg`;
+            let params = {};
+            params.login = login;
+            params.password = pw1;
+            let opt = {};
+            opt.method = "POST";
+            opt.body = JSON.stringify(params);
+            fetch(url, opt).then(function(response) {
+                response.text().then(function(text) {
+                });
+            });
         }
     </script>
 </head>

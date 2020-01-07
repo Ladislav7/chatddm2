@@ -15,4 +15,4 @@ exports.apiChat = function (req, res, obj) {
         addObj.nick = req.parameters.nick;
         list.push(addObj);
     }
-}
+};
