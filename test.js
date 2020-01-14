@@ -6,17 +6,18 @@ function zamixujHeslo(heslo) {
     mix = mix.split("").reverse().join("");
     return mix;
 }
+
 //registrace
 let hesloZRegistrace = "testicek";
 let mixZRegistrace = zamixujHeslo(hesloZRegistrace);
-console.log("mixZRegistrace:"+mixZRegistrace);
+console.log("mixZRegistrace: "+mixZRegistrace); //toto bude ulozeno v souboru/databazi
 
 //prihlaseni
 let hesloZPrihlaseni = "testicek";
 let mixZPrihlaseni = zamixujHeslo(hesloZPrihlaseni);
-console.log("mixZPrihlaseni:"+mixZPrihlaseni);
-if (mixZPrihlaseni === mixZRegistrace){
+console.log("mixZPrihlaseni: "+mixZPrihlaseni);
+if (mixZPrihlaseni === mixZRegistrace) {
     console.log("OK");
-}else {
-    console.log("ERROR")
+} else {
+    console.error("spatne heslo!");
 }

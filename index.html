@@ -74,6 +74,12 @@
             opt.body = JSON.stringify(params);
             fetch(url, opt).then(function(response) {
                 response.text().then(function(text) {
+                    let obj = JSON.parse(text);
+                    if (obj.error){ //nastaven error
+                        alert(obj.error);
+                    } else {
+                      ukazDivPrihl();
+                    }
                 });
             });
         }
