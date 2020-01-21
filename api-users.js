@@ -36,5 +36,16 @@ exports.apiUsers = function (req, res, obj) {
         list.push(addObj);
         fs.writeFileSync(FILE_USERS, JSON.stringify(list, null, 2));
         }
+    } else if (req.pathname.endsWith("/login")) {
+        obj.error = "Uzivatelske jmeno nebo heslo je spatne!";
+        for (let u of list){//for (let i =0; i<list.length; i++) {let u = list[i]}
+            console.log(u);
+            if (u.login === req.parameters.login){
+                if (u.password === zamixujHeslo(req.parameters.password)){
+                    obj.error = null; //timto neni error nastaven
+                }
+            break;
+            }
+        }
     }
 };

@@ -83,6 +83,28 @@
                 });
             });
         }
+        function prihlasit() {
+            let pw1 = document.getElementById("password").value;
+            let login = document.getElementById("login").value;
+
+            let url = `${HOST}/users/login`;
+            let params = {};
+            params.login = login;
+            params.password = pw1;
+            let opt = {};
+            opt.method = "POST";
+            opt.body = JSON.stringify(params);
+            fetch(url, opt).then(function(response) {
+                response.text().then(function(text) {
+                    let obj = JSON.parse(text);
+                    if (obj.error){ //nastaven error
+                        alert(obj.error);
+                    } else {
+                        ukazDivChat();
+                    }
+                });
+            });
+        }
     </script>
 </head>
 <body onload="spustPoNacteni()">
@@ -96,7 +118,7 @@
     <h3>Přihlášení</h3>
     Přihlašovací jméno: <input type="text" id="login"><br>
     Heslo: <input type="password" id="password"><br>
-    <input type="button" value="Přihlásit">
+    <input type="button" value="Přihlásit" onclick="prihlasit()">
     <input type="button" value="Registrovat..." onclick="ukazDivReg()">
 </div>
 
